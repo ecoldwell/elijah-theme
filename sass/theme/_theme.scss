@@ -1,0 +1,409 @@
+// This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here
+// BASIC STYLES
+html, body {
+  font-size: 18px;
+  margin: 0px;
+  color: rgba(56,58,59,1);
+  @include mobile {
+    font-size: 15px;
+  }
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 1em;
+  font-weight: inherit;
+  margin: 0px;
+ font-family: 'Times New Roman',helvetica, sans-serif;
+
+}
+
+a {
+	text-decoration: none;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+
+/* No list style for lists except in RTE content. */
+ul, ol {
+  list-style-type: none;
+
+  padding: 0;
+}
+
+.rte p {
+  // max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+.rte p+p {
+  margin-top: 0.5em !important;
+
+}
+
+.rte a {
+  border-bottom: 0ps solid rgba(0,0,0,0) !important;
+}
+
+img {
+	width: 100%;
+	object-fit: cover;
+}
+
+.entry-content {
+	padding-right: 4vw;
+	padding-left: 4vw;
+}
+
+// NAVIGATION / HEADER
+.main-nav {
+	ul {
+	width: 100%;
+	@include flexbox();
+	@include justify-content(space-between);
+	padding: 2vw;
+	padding-right: 4vw;
+	padding-left: 4vw;
+	z-index: 999999999999999999999999999999999999999999;
+	@include mobile {
+		@include flex-wrap(wrap);
+		@include justify-content(center);
+	}
+	a {
+		font-size: 1.5em;
+		font-weight: 500;
+		letter-spacing: 0.05em;
+		color: rgba(56,58,59,1);
+		border-bottom: 2px solid rgba(0,0,0,0) !important;
+		height:1.25em;
+		&:hover {
+			border-bottom: 2px solid rgba(56,58,59,1) !important;
+			height:1.25em;
+		}
+		@include mobile {
+			font-size: 1em;
+			padding: 2vw;
+		}
+	}
+	@include mobile {
+		width:90%;
+		margin: 0 auto;
+	}
+	}
+}
+
+
+// LANDING PAGE HEADER
+.custom-background {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	height: 100vh !important;
+	width: 100vw !important;
+}
+
+.landing-page {
+	@include flexbox();
+	@include flex-direction(column);
+	@include justify-content(center);
+	padding: 2vw;
+	text-align: center;
+	h1 {
+		text-transform: capitalize;
+		margin: 0px !important;
+		font-size: 3em;
+		z-index: 999;
+		font-style: italic;
+		@include mobile {
+			font-size: 2em;
+		}
+	}
+}
+
+.landing-page-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	img {
+		height: 100vh !important; 
+		width:100%;
+		object-fit: cover;
+	}
+}
+
+// POSTS WIDGET
+#custom-home-listings .chw-widget{
+	@include flexbox();
+	@include flex-direction(column);
+	@include align-items (center);
+	@include justify-content(center);
+}
+
+// LANDING PAGE INFO
+.our-story {
+	max-width: 920px;
+	margin: 0 auto;
+	padding-right: 4vw;
+	padding-left: 4vw;
+	text-align: center;
+	h2 {
+		text-align: center;
+		font-size: 2em;
+		font-weight: 500;
+		letter-spacing: 0.05em;
+	}
+}
+
+// just for now (until we figure out the menu thing)
+.navbar {
+	display:none;
+}
+
+// SINGLE POST PAGE
+// IF WANT TO DO OVERLAY
+#overlay {
+	display: block;
+	    position: fixed;
+	    width: 100%;
+	    height: 100%;
+	    left: 0;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    transition: 500ms opacity linear;
+	    z-index: 1000;
+	    opacity: 0;
+	    will-change: opacity;
+	    pointer-events: none;
+}
+
+#overlay.show {
+	opacity: 1;
+	pointer-events: all;
+}
+.landing-nav {
+	#menu-main-menu {
+	position: absolute;
+	@include mobile {
+		width:100% !important;
+	}
+}
+}
+
+.hero-landing-location-page {
+	height: 100vh;
+    width: 100vw;
+    padding: 0px;
+    margin: 0px;
+    position: fixed;
+    top: 0;
+    z-index: -99999;
+    opacity: 0.5;
+    img {
+    	height:100%;
+    }
+}
+.main-post-layout {
+	@include flexbox();
+@include flex-direction(row);
+	.post-text-content {
+		width: 40%;
+		padding-right: 2vw;
+		h1 {
+			font-size: 1.2em;
+			font-weight: 500;
+			@include mobile {
+				font-size: 1em;
+			}
+		}
+		@include mobile {
+			width: 90%;
+			margin: 0 auto;
+		}
+	}
+	.post-gallery-content {
+		width: 60%;
+		img {
+			height: 70vh;
+		}
+		@include mobile {
+			width: 90%;
+			margin: 0 auto;
+		}
+	}
+	@include mobile {
+		@include flex-wrap(wrap);
+	}
+
+	.product-photos {
+		margin-top: 0px;
+	}
+}
+	// SLIDER 
+
+	.slide-count-wrap {
+		position: relative;
+		left: 80%;
+		   @include mobile {
+		   	left: 75%;
+		   }
+	}
+
+.entry-footer {
+	display:none;
+}
+
+.full-width-text {
+	width: 100%;
+	@include mobile {
+		max-width: 90%;
+		margin: 0 auto;
+	}
+}
+
+// CATAGORY HEADER 
+
+.cat-header {
+	ul {
+		padding-top: 0px;
+		margin-top:0px;
+
+	}
+	li {
+		height: 100vh;
+		img {
+			height: 100%;
+			opacity: 0.5;
+		}
+	}
+	a {
+		font-size: 3em;
+		    position: absolute;
+		    top: 26%;
+		    left: 43%;
+		    text-decoration: none;
+		    color: black;
+		    font-style: italic;
+		    @include mobile {
+		    	left: 32%;
+		    }
+	}
+	p{
+		position: absolute;
+		    top: 52%;
+		    max-width: 60%;
+		    margin-left: 20%;
+		    text-align: center;
+	}
+}
+
+.close {
+	display:none;
+}
+
+// THEN NOW STYLES
+.category-category-4 {
+	.post-text-content {
+		width: 80%;
+		margin: 0 auto;
+		text-align: center;
+		padding-top: 2vw;
+		padding-bottom: 2vw;
+		border-bottom: 2px solid rgba(56,58,59,1);
+		h1 {
+			font-size: 3em;
+			text-decoration: underline;
+		}
+	}
+	.slide-count-wrap {
+		display:none;
+	}
+	.post-gallery-content {
+		display: block;
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		transition: 500ms opacity linear;
+		z-index: 1000;
+		opacity: 0;
+		will-change: opacity;
+		pointer-events: none;
+		z-index:999999999999999999999
+	}
+	.post-gallery-content.show {
+		opacity:1;
+		pointer-events: all;
+		img {
+			height: 100vh;
+		}
+		.close {
+			display:block;
+			z-index: 999999999999999999999999999;
+			position: fixed;
+			top:1vw;
+			right: 2vw;
+			font-size: 2em;
+			padding: 2vw;
+			font-weight: bold;
+			p {
+				margin: 0px;
+			}
+
+		}
+		.lightbox-link p {
+			display: block;
+			    z-index: 999999999999999999999;
+			    position: fixed;
+			    top: 80vh;
+			    // left: 46vw;
+			    // font-size: 1.7em;
+			    // color: rgba(56,58,59,1);
+		}
+	}
+}
+
+.image-text {
+	@include flexbox();
+	@include flex-wrap(wrap);
+	@include justify-content(space-between);
+	padding-top: 2vw;
+	padding-bottom: 2vw;
+	.full-width-text {
+		padding-bottom: 2vw;
+	}
+	.image {
+		width: 40%;
+		@include mobile {
+			width: 90%;
+			margin: 0 auto;
+		}
+		img {
+			width: 100%;
+			min-height: 60vh;
+		}
+	}
+	.text {
+		width: 55%;
+		p {
+			margin: 0;
+		}
+		@include mobile {
+			width: 90%;
+			margin: 0 auto;
+		}
+	}
+}
+
