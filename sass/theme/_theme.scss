@@ -1,4 +1,5 @@
 // This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here
+@import 'fancybox';
 // BASIC STYLES
 html, body {
   font-size: 18px;
@@ -161,6 +162,11 @@ img {
 		font-weight: 500;
 		letter-spacing: 0.05em;
 	}
+	blockquote p {
+		font-size: 1.3em;
+		font-weight: bold;
+		// color: rgba(20,20,20,1);
+	}
 }
 
 // just for now (until we figure out the menu thing)
@@ -207,7 +213,7 @@ img {
     position: fixed;
     top: 0;
     z-index: -99999;
-    opacity: 0.5;
+    opacity: 0.35;
     img {
     	height:100%;
     }
@@ -285,7 +291,7 @@ img {
 			opacity: 0.5;
 		}
 	}
-	a {
+	h1 {
 		font-size: 3em;
 		    position: absolute;
 		    top: 26%;
@@ -303,9 +309,57 @@ img {
 		    max-width: 60%;
 		    margin-left: 20%;
 		    text-align: center;
+		    font-size:1.2em;
+		    font-weight: bold;
+		    color: rgba(56,58,59,1);
+	}
+	h1 {
+		display:none;
 	}
 }
 
+.category-category-4{
+	.cat-header {
+		.TN {
+			display: block !important;
+			left: 38%;
+		}
+	}
+}
+
+.category-7 {
+	.cat-header {
+		.class {
+			display:block;
+		}
+	}
+}
+.category-3 {
+	.cat-header {
+		.archive {
+			display:block;
+		}
+	}
+}
+.category-5 {
+	.cat-header {
+		.pp {
+			display:block;
+			left: 32%;
+		}
+	}
+	.entry-content {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+}
+.category-building {
+	.cat-header {
+		.building {
+			display:block;
+		}
+	}
+}
 .close {
 	display:none;
 }
@@ -327,8 +381,8 @@ img {
 	.slide-count-wrap {
 		display:none;
 	}
-	.post-gallery-content {
-		display: block;
+	#post-gallery-content-cat {
+		// display:none;
 		position: fixed;
 		width: 100%;
 		height: 100%;
@@ -341,13 +395,21 @@ img {
 		opacity: 0;
 		will-change: opacity;
 		pointer-events: none;
-		z-index:999999999999999999999
+		z-index:999999999999999999999;
+		img {
+			height: 100vh;
+			width: 100vw;
+
+		}
 	}
-	.post-gallery-content.show {
+	#post-gallery-content-cat.show {
 		opacity:1;
 		pointer-events: all;
 		img {
 			height: 100vh;
+			width:100vw;
+		}
+
 		}
 		.close {
 			display:block;
@@ -360,9 +422,9 @@ img {
 			font-weight: bold;
 			p {
 				margin: 0px;
+				text-shadow: 2px 2px 2px black, 2px 2px 2px white;
+				color: rgba(220,220,220,0.9);
 			}
-
-		}
 		.lightbox-link p {
 			display: block;
 			    z-index: 999999999999999999999;
@@ -377,26 +439,52 @@ img {
 
 .image-text {
 	@include flexbox();
-	@include flex-wrap(wrap);
+	// @include flex-wrap(wrap);
+	// @include flex-grow(1);
 	@include justify-content(space-between);
 	padding-top: 2vw;
 	padding-bottom: 2vw;
+	max-width:800px;
+	margin: 0 auto;
+	@include mobile {
+		@include flex-wrap(wrap);
+	}
+	.image,
+	.text {
+		@include flex(1);
+		@include mobile {
+			@include flex(none);
+		}
+	}
+	.col-left {
+		// @include order(-1);
+	}
 	.full-width-text {
 		padding-bottom: 2vw;
+		@include flexbox();
+		@include justify-content(center);
+		@include align-items(center);
 	}
 	.image {
-		width: 40%;
+		// min-width: 50%;
+		padding: 2vw;
 		@include mobile {
 			width: 90%;
 			margin: 0 auto;
 		}
 		img {
 			width: 100%;
-			min-height: 60vh;
+			height: 100%;
 		}
 	}
 	.text {
-		width: 55%;
+		padding: 2vw;
+		@include flexbox();
+		@include justify-content(center);
+		@include align-items(center);
+		.align-text {
+			width:80%;
+		}
 		p {
 			margin: 0;
 		}
@@ -407,3 +495,38 @@ img {
 	}
 }
 
+.then-now-slider {
+	display:none;
+}
+
+
+// .category-category-4 {
+// 	.post-images-image {
+// 		display:block;
+// 				position: fixed !important;
+// 				width: 100% !important;
+// 				height: 100% !important;
+// 				left: 0;
+// 				top: 0;
+// 				right: 0;
+// 				bottom: 0;
+// 				transition: 500ms opacity linear;
+// 				z-index: 1000;
+// 				opacity: 0;
+// 				will-change: opacity;
+// 				pointer-events: none;
+// 				z-index:999999999999999999999;
+// 				img {
+// 					height: 100vh;
+// 					width: 100vw;
+
+// 				}
+// 	}
+// }
+// 	.post-images-image.active {
+// 		opacity:1;
+// 		pointer-events: all;
+// 		img {
+// 			height: 100vh;
+// 			width:100vw;
+// 		}

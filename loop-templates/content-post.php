@@ -39,19 +39,23 @@
 	<div class="entry-content">
 		<section class="main-post-layout" id="location-content">
 			<div class="post-text-content">
-				<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+				<?php the_title( '<h1 class="entry-title then-now-link">', '</h1>' );  ?>
 				<?php the_content(); ?>
+			</div>
+			<div class="post-gallery-content slideshow post-gallery-content-cat" id="post-gallery-content-cat">
+			<div class="close">
+				<p>X</p>
 			</div>
 			<div class="post-gallery-content slideshow">
 			<?php $attachments = new Attachments( 'attachments' ); /* pass the instance name */ ?>
 			<?php if( $attachments->exist() ) : ?>
-			  <ul class="post-images data-slick product-photos">
+			  <ul class="post-images data-slick product-photos" id="data-slick post-gallery-content-cat">
 			    <?php while( $attachments->get() ) : ?>
 			      <li class="post-images-image">
-			        <!-- <a class="lightbox-link" href="#"> -->
-			        <img src= "<?php echo $attachments->src( 'lightbox' )  ?>" target="_blank" title="<?php echo $attachments->field( 'caption' ); ?>" rel="gallery" alt="">
-			         
-			   <!--      </a> -->
+			        <a class="lightbox-link" target="_blank">
+			        <img class="title"src= "<?php echo $attachments->src( 'lightbox' )  ?>" title="<?php echo $attachments->field( 'caption' ); ?>" rel="gallery"><?php echo $attachments->field( 'caption' ); ?>
+			        </a>
+
 			         <div class="slide-count-wrap">
 			         	<span class="left"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></span>
 			           <span class="current"></span> /
@@ -174,5 +178,12 @@ var slideCount = null;
 
 
 	});
+	$('.then-now-link').on("click", function(){
+
+		document.getElementById('post-gallery-content-cat').classList.add("show");
+	});
+	$('.close').on("click", function(){
+			document.getElementById('post-gallery-content-cat').classList.remove("show");
+		});
 
 </script>

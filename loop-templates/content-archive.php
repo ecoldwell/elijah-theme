@@ -24,19 +24,21 @@
 					<?php the_title( '<h1 class="entry-title then-now-link">', '</h1>' ); ?>
 					<?php the_content(); ?>
 				</div>
-				<div class="post-gallery-content slideshow" id="post-gallery-content">
+				<div class="post-gallery-content slideshow post-gallery-content-cat" id="post-gallery-content-cat">
 				<div class="close">
 					<p>X</p>
 				</div>
-				<?php $attachments = new Attachments( 'attachments' ); /* pass the instance name */ ?>
+
+	
+				<?php $attachments = new Attachments( 'attachments', $post_ID ); /* pass the instance name */ ?>
 				<?php if( $attachments->exist() ) : ?>
-				  <ul class="post-images data-slick product-photos">
+				  <ul class="post-images data-slick product-photos" id="data-slick post-gallery-content-cat">
 				    <?php while( $attachments->get() ) : ?>
 				      <li class="post-images-image">
-				        <a class="lightbox-link" href="#">
-				        <img class="title"src= "<?php echo $attachments->src( 'lightbox' )  ?>" target="_blank" title="<?php echo $attachments->field( 'caption' ); ?>" rel="gallery" alt=""><?php echo $attachments->field( 'caption' ); ?>
-				         
+				        <a class="lightbox-link" target="_blank">
+				        <img class="title"src= "<?php echo $attachments->src( 'lightbox' )  ?>" title="<?php echo $attachments->field( 'caption' ); ?>" rel="gallery"><?php echo $attachments->field( 'caption' ); ?>
 				        </a>
+
 				         <div class="slide-count-wrap">
 				         	<span class="left"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></span>
 				           <span class="current"></span> /
@@ -49,6 +51,8 @@
 
 				  </ul>
 				<?php endif; ?>
+
+
 				</div>
 
 			</section>
@@ -64,14 +68,17 @@
 
 							        if( get_row_layout() == 'image_text' ): ?>
 							        <div class="image-text">
-								        <div class="image">
+								        <div class="image col">
 								        	<?php 
 								        $image = get_sub_field('image') ?>
 								        <img src="<?php echo $image['url']; ?>" alt="">
 								        </div>
-							        	<div class="text">
+							        	<div class="text col col-left">
+							        	<div class="align-text">
+							        		
 								        <?php
 								        	the_sub_field('text'); ?>
+							        	</div>
 								        </div>
 							        </div>
 				
@@ -79,12 +86,15 @@
 
 							        elseif( get_row_layout() == 'text_image' ): ?>
 							        <div class="image-text">
-							        	<div class="text">
+							        	<div class="text col">
+							        	<div class="align-text">
+							        		
 							        	<?php 
 							        		the_sub_field('text'); ?>
 							        		
 							        	</div>
-							        	<div class="image">
+							        	</div>
+							        	<div class="image col col-left">
 							        		<?php  
 							        	$image = get_sub_field('image') ?>
 							        	<img src="<?php echo $image['url']; ?>" alt="">
@@ -92,11 +102,14 @@
 							        </div>
 							        	<?php 
 							        	elseif( get_row_layout() == 'full_width_text' ): ?>
-							        	<div class="full-width-text">
+							        	<div class="full-width-text col col-left">
 							        		<div class="text">
+							        		
+							        			
 							        		<?php 
 							        			the_sub_field('full_width_text'); ?>
 							        			
+							        	
 							        		</div>
 							        	</div>
 							        		<?php 
@@ -110,6 +123,7 @@
 
 							?>
 						</section>
+						
 			</div>
 
 		<?php
@@ -203,10 +217,27 @@ var slideCount = null;
 	  }
 	});
 	$('.then-now-link').on("click", function(){
-		document.getElementById('post-gallery-content').classList.add("show");
+
+		document.getElementById('post-gallery-content-cat').classList.add("show");
 	});
 	$('.close').on("click", function(){
-		document.getElementById('post-gallery-content').classList.remove("show");
-	});
+			document.getElementById('post-gallery-content-cat').classList.remove("show");
+		});
+	// $('.then-now-link').on("click", function(){
+	// 	console.log('hi');
+	// 	$('.post-gallery-content-cat').addClass('active');
+	// 	console.log('work?');
+	
+	// 	if (!($('.post-gallery-content-cat')).hasClass('active')) {
+	// 		console.log('yes?');
+	// 		$('.post-gallery-content-cat').addClass('active');
+	// 	}
+	// });
+	// $('.then-now-link').on("click", function(){
+	// 	$('.post-gallery-content-cat').addClass('active');
+	// });
+	// $('.close').on('click', function(){
+	// 	$('.post-gallery-content-cat').removeClass('active');
+	// });
 
 </script>

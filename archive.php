@@ -26,7 +26,6 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 			<?php get_template_part( 'global-templates/left-sidebar-check', 'none' ); ?>
 
 
-				<?php if ( have_posts() ) : ?>
 			  <div class="main-nav landing-nav">
 			      <?php wp_nav_menu( array(
 			        'menu' => 'main-menu',
@@ -47,7 +46,13 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 			     </li>
 
 			</ul>
-			       <h1></h1>
+					<h1 class="building">Building</h1>
+					<h1 class="pp">Public Presentations</h1>
+					<h1 class="archive">Archive</h1>
+					<h1 class="TN">Then & Now</h1>
+					<h1 class="class">Class</h1>
+			       <h1><a href="<?php get_category_link( $category_id );  ?>">
+			       <?php get_category_link( $category_id );  ?></a></h1>
 			       <p class="des"> <?php echo category_description( $category_id ); ?> 
 
 					</p>
@@ -57,8 +62,9 @@ $sidebar_pos = get_theme_mod( 'understrap_sidebar_position' );
 
 
 					<?php /* Start the Loop */ ?>
+				<?php if ( have_posts() ) : ?>
 					<?php while ( have_posts() ) : the_post(); ?>
-
+			
 						<?php
 
 						/*
